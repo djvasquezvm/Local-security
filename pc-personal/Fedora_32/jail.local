@@ -1,0 +1,17 @@
+[DEFAULT]
+bantime  = -1
+findtime  = 1m
+maxretry = 2
+destemail = djvasquezvm@gmail.com
+sender = djvasquezvm@gmail.com
+sendername = Fail2ban
+mta = sendmail
+
+# SSH
+[sshd]
+enabled  = true
+filter   = sshd
+action   = iptables-multiport[name=---FAIL-LOGIN-SSHD---, port=6222]
+	   %(action_mwl)s
+
+logpath  = /var/log/sshd/fail2ban_log
